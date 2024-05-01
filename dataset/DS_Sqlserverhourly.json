@@ -1,0 +1,17 @@
+{
+	"name": "DS_Sqlserverhourly",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OnPremSqlDataBase",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "hourly"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

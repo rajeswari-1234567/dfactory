@@ -1,0 +1,47 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "p_sqldb_storageaccount",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"InputSchema": {
+							"value": "@pipeline().parameters.InputSchema",
+							"type": "Expression"
+						},
+						"InputTableName": {
+							"value": "@pipeline().parameters.InputTableName",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"parameters": {
+			"InputSchema": {
+				"type": "string"
+			},
+			"InputTableName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "on_prem_sql_server"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-23T17:52:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

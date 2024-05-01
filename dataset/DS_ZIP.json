@@ -1,0 +1,44 @@
+{
+	"name": "DS_ZIP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakestorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DS_Filesystem": {
+				"type": "string"
+			},
+			"DS_Directory": {
+				"type": "string"
+			},
+			"DS_Filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().DS_Filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().DS_Directory",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().DS_Filesystem",
+					"type": "Expression"
+				}
+			},
+			"compression": {
+				"type": "ZipDeflate",
+				"level": "Optimal"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

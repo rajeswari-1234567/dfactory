@@ -1,0 +1,50 @@
+{
+	"name": "P_Practice5_deleteactivity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "filesdeleted",
+						"value": "all txt files in claims folder of onbasepractice container"
+					}
+				],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_delete",
+						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "ls_datalakestorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "onbasepractice"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "on_prem_sql_server"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-18T19:45:33Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

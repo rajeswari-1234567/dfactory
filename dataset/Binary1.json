@@ -1,0 +1,20 @@
+{
+	"name": "Binary1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakestorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dailysales.csv",
+				"folderPath": "dailyfiles",
+				"fileSystem": "onbasepractice"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

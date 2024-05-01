@@ -1,0 +1,58 @@
+{
+	"name": "parameters_and_variables",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"description": "",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "select* from information_schema.tables where table_type = '@{pipeline().parameters.Table_Type}'",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_sqldb",
+						"type": "DatasetReference",
+						"parameters": {
+							"sourceschema": {
+								"value": "@pipeline().parameters.Table_Type",
+								"type": "Expression"
+							},
+							"sourcetable": {
+								"value": "@pipeline().parameters.Table_Type",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"parameters": {
+			"Table_Type": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "part1"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-11T00:23:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

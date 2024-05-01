@@ -1,0 +1,33 @@
+{
+	"name": "DS_DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakestorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "SampleExcelSpreadSheet.xls",
+				"folderPath": {
+					"value": "raji",
+					"type": "Expression"
+				},
+				"fileSystem": "onbasepractice"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "��\u0011ࡱ\u001a�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000>\u0000\u0003\u0000��\t\u0000\u0006\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0000\u0000\u0000P\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0010\u0000\u0000����\u0000\u0000\u0000\u0000����\u0000\u0000\u0000\u0000O\u0000\u0000\u0000������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������\t\b\u0010\u0000\u0000\u0006\u0005\u0000ZO�\u0007�\u0000\u0002\u0000\u0006\b\u0000\u0000�\u0000\u0002\u0000�\u0004�\u0000\u0002\u0000\u0000\u0000�\u0000\u0000\u0000\\\u0000p\u0000\u0012\u0000\u0000raji Chalamalsetty                                                                                           B\u0000\u0002\u0000�\u0004a\u0001\u0002\u0000\u0000\u0000�\u0001\u0000\u0000=\u0001\b\u0000\u0001\u0000\t\u0000",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

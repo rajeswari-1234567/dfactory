@@ -1,0 +1,56 @@
+{
+	"name": "ds_Sqlserver_InputTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "OnPremSqlDataBase",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DSP_Input_Schema": {
+				"type": "string"
+			},
+			"DSP_Input_Table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Product_ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Description",
+				"type": "varchar"
+			},
+			{
+				"name": "Price",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Quantity",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().DSP_Input_Schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().DSP_Input_Table",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

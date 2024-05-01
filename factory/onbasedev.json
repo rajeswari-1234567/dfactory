@@ -1,0 +1,9 @@
+{
+	"name": "onbasedev",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6755714f-5095-4aa9-94db-467929d4fe68",
+		"tenantId": "70de1992-07c6-480f-a318-a1afcba03983"
+	}
+}

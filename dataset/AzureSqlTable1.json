@@ -1,0 +1,116 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "intcolumn",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "bigintcolumn",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "smallintcolumn",
+				"type": "smallint",
+				"precision": 5
+			},
+			{
+				"name": "tinyintcolumn",
+				"type": "tinyint",
+				"precision": 3
+			},
+			{
+				"name": "decimalcolumn",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "numericcolumn",
+				"type": "decimal",
+				"precision": 8,
+				"scale": 4
+			},
+			{
+				"name": "floatcolumn",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "realcolumn",
+				"type": "real",
+				"precision": 7
+			},
+			{
+				"name": "datecolumn",
+				"type": "date"
+			},
+			{
+				"name": "datetimecolumn",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "timecolumn",
+				"type": "time",
+				"scale": 7
+			},
+			{
+				"name": "charcolumn",
+				"type": "char"
+			},
+			{
+				"name": "vcharcolumn",
+				"type": "varchar"
+			},
+			{
+				"name": "textcolumn",
+				"type": "text"
+			},
+			{
+				"name": "ncharcolumn",
+				"type": "nchar"
+			},
+			{
+				"name": "nvcharcolumn",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ntextcolumn",
+				"type": "ntext"
+			},
+			{
+				"name": "bitcolumn",
+				"type": "bit"
+			},
+			{
+				"name": "binarycolumn",
+				"type": "binary"
+			},
+			{
+				"name": "vbinarycolumn",
+				"type": "varbinary"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "medical_records"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

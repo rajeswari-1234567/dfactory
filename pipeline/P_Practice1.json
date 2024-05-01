@@ -1,0 +1,144 @@
+{
+	"name": "P_Practice1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_Practice1",
+						"type": "DatasetReference",
+						"parameters": {
+							"DSP_filesystem": {
+								"value": "onbasepractice",
+								"type": "Expression"
+							},
+							"DSP_directory": {
+								"value": "Order_Items",
+								"type": "Expression"
+							},
+							"DSP_filename": {
+								"value": "@activity('Get Metadata1').output.itemName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_Practice1",
+						"type": "DatasetReference",
+						"parameters": {
+							"DSP_filesystem": {
+								"value": "onbasepractice",
+								"type": "Expression"
+							},
+							"DSP_directory": {
+								"value": "ram",
+								"type": "Expression"
+							},
+							"DSP_filename": {
+								"value": "@concat(substring(activity('Get Metadata1').output.itemName,0,indexOf(activity('Get Metadata1').output.itemName, '_')),'.csv')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			},
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_Practice1",
+						"type": "DatasetReference",
+						"parameters": {
+							"DSP_filesystem": "onbasepractice",
+							"DSP_directory": "Order_Items",
+							"DSP_filename": {
+								"value": "Order_Items.csv",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"itemName"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "on_prem_sql_server"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-12T18:32:41Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

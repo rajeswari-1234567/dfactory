@@ -1,0 +1,56 @@
+{
+	"name": "it_cn_server",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "ds_Sqlserver_InputTable",
+						"type": "DatasetReference",
+						"parameters": {
+							"DSP_Input_Schema": {
+								"value": "@pipeline().parameters.P_InputSchema",
+								"type": "Expression"
+							},
+							"DSP_Input_Table": {
+								"value": "@pipeline().parameters.P_InputTableName",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": true
+				}
+			}
+		],
+		"parameters": {
+			"P_InputSchema": {
+				"type": "string"
+			},
+			"P_InputTableName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "on_prem_sql_server"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-11T18:57:21Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

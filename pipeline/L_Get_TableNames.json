@@ -1,0 +1,52 @@
+{
+	"name": "L_Get_TableNames",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "select* from information_schema.tables where table_type = 'base table'",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_Sql_Source_InputTableName",
+						"type": "DatasetReference",
+						"parameters": {
+							"DSP_SchemaName": {
+								"value": "dbo",
+								"type": "Expression"
+							},
+							"DSP_TableName": {
+								"value": "categories",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"folder": {
+			"name": "on_prem_sql_server"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-04-11T22:38:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

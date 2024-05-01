@@ -1,0 +1,33 @@
+{
+	"name": "DS_Zip_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakestorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DSP_Filesystem": {
+				"type": "string"
+			},
+			"DSP_Directory": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().DSP_Directory",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().DSP_Filesystem",
+					"type": "Expression"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

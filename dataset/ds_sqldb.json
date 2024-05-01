@@ -1,0 +1,32 @@
+{
+	"name": "ds_sqldb",
+	"properties": {
+		"description": "brings data from employees table in sql data base to storage account",
+		"linkedServiceName": {
+			"referenceName": "ls_sqldb",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sourceschema": {
+				"type": "string"
+			},
+			"sourcetable": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().sourceschema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().sourcetable",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

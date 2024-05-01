@@ -1,0 +1,45 @@
+{
+	"name": "DS_Practice2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_datalakestorage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DSP_Filesystem": {
+				"type": "string"
+			},
+			"DSP_Directory": {
+				"type": "string"
+			},
+			"DSP_FileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().DSP_FileName",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().DSP_Directory",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().DSP_Filesystem",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
